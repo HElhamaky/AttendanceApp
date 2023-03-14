@@ -1,7 +1,7 @@
 h6 {
   text-align: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 #reader {
@@ -100,6 +100,10 @@ h6 {
   background-position: 50%;
 }
 
+#qr-shaded-region {
+  border-width: 20px 20px !important;
+}
+
 img[alt='Info icon'] {
   display: none !important;
 }
@@ -110,8 +114,9 @@ img[alt='Camera based scan'] {
 @media (max-width: 420px) {
   #reader {
     width: 350px;
+    height: 400px;
   }
   #qr-shaded-region {
-    border-width: 65px 90px;
+    border-width: 5px 5px !important;
   }
 }
