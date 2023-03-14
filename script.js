@@ -1,6 +1,6 @@
 // When scan is successful fucntion will produce data
 let data = [];
-let result = [];
+let reversedResult = [];
 
 function onScanSuccess(qrCodeMessage) {
   //document.getElementById('result').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
@@ -8,19 +8,19 @@ function onScanSuccess(qrCodeMessage) {
 
   // Split string at comma character and create array
   const arr = str.split(',');
-  data.push(arr);
+  data.push(arr.reverse());
 
   // Use a Set to store the unique JSON strings
   let uniqueArray = new Set(data.map(JSON.stringify));
 
   // Convert the JSON strings back into arrays
-  result = Array.from(uniqueArray).map(JSON.parse);
+  let result = Array.from(uniqueArray).map(JSON.parse);
   const table = document.querySelector('.tableArea'); // replace #myDiv with the ID of your div
   table.style.display = 'block';
   const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
-  genBtn.style.display = 'block';
+  genBtn.style.display = 'flex';
 
-  let reversedResult = result.reverse();
+  reversedResult = result.reverse();
   console.log(arr);
   console.log(data);
   console.log(result);
@@ -240,9 +240,11 @@ function createSheet() {
     );
 }
 
-if (result.length === 0) {
+if (reversedResult.length === 0) {
   const table = document.querySelector('.tableArea'); // replace #myDiv with the ID of your div
   const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
   table.style.display = 'none'; // hide the div
   genBtn.style.display = 'none'; // hide the div
 }
+
+console.log(reversedResult);
