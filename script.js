@@ -20,6 +20,7 @@ function onScanSuccess(qrCodeMessage) {
   const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
   genBtn.style.display = 'block';
 
+  let reversedResult = result.reverse();
   console.log(arr);
   console.log(data);
   console.log(result);
