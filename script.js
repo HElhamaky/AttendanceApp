@@ -17,6 +17,8 @@ function onScanSuccess(qrCodeMessage) {
   result = Array.from(uniqueArray).map(JSON.parse);
   const table = document.querySelector('.tableArea'); // replace #myDiv with the ID of your div
   table.style.display = 'block';
+  const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
+  genBtn.style.display = 'none';
 
   console.log(arr);
   console.log(data);
