@@ -1,6 +1,8 @@
 // When scan is successful fucntion will produce data
 let data = [];
-let reversedResult = [];
+let data2 = [];
+let tableData = [];
+let googleSheetData = [];
 
 function onScanSuccess(qrCodeMessage) {
   //document.getElementById('result').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
@@ -8,32 +10,46 @@ function onScanSuccess(qrCodeMessage) {
 
   // Split string at comma character and create array
   const arr = str.split(',');
+  const arrWithTime = str.split(',');
+  const timestamp = Date.now();
+  const date = new Date(timestamp);
+  const formattedDate = date.toLocaleDateString();
+  const options = {
+    hour12: true,
+    hour: 'numeric',
+    minute: 'numeric',
+  };
+  const formattedTime = date.toLocaleTimeString('en-US', options);
+  // const formattedTime = date.toLocaleTimeString();
+  arrWithTime.push(`${formattedDate} ${formattedTime}`);
   data.push(arr.reverse());
+  data2.push(arrWithTime);
 
   // Use a Set to store the unique JSON strings
   let uniqueArray = new Set(data.map(JSON.stringify));
+  let uniqueArray2 = new Set(data2.map(JSON.stringify));
 
   // Convert the JSON strings back into arrays
   let result = Array.from(uniqueArray).map(JSON.parse);
+  let result2 = Array.from(uniqueArray2).map(JSON.parse);
   const table = document.querySelector('.tableArea'); // replace #myDiv with the ID of your div
   table.style.display = 'block';
   const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
   genBtn.style.display = 'flex';
 
-  reversedResult = result.reverse();
-  console.log(arr);
-  console.log(data);
-  console.log(result);
-  // Output: ["احمد ابوسريع يوسف عبد الواحد عتمان", "SS"]
+  tableData = result.reverse();
+  googleSheetData = result2;
+  console.log(tableData);
+  console.log(googleSheetData);
 
   var tableBody = document.getElementById('table-body');
 
   // Loop through the data array and build the table rows
   var tableRows = '';
-  for (var i = 0; i < result.length; i++) {
+  for (var i = 0; i < tableData.length; i++) {
     var rowData = '<tr>';
-    for (var j = 0; j < result[i].length; j++) {
-      rowData += '<td>' + result[i][j] + '</td>';
+    for (var j = 0; j < tableData[i].length; j++) {
+      rowData += '<td>' + tableData[i][j] + '</td>';
     }
     rowData += '</tr>';
     tableRows += rowData;
@@ -200,7 +216,7 @@ function createSheet() {
             range: 'A1:C1',
             valueInputOption: 'USER_ENTERED',
             resource: {
-              values: [['Name', 'Department']],
+              values: [['Name', 'Department', 'Timestamp']],
             },
           })
           .then(
@@ -213,7 +229,7 @@ function createSheet() {
                   range: 'A2:C',
                   valueInputOption: 'USER_ENTERED',
                   resource: {
-                    values: result,
+                    values: googleSheetData,
                   },
                 })
                 .then(
@@ -240,11 +256,9 @@ function createSheet() {
     );
 }
 
-if (reversedResult.length === 0) {
+if (googleSheetData.length === 0) {
   const table = document.querySelector('.tableArea'); // replace #myDiv with the ID of your div
   const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
   table.style.display = 'none'; // hide the div
   genBtn.style.display = 'none'; // hide the div
 }
-
-console.log(reversedResult);
