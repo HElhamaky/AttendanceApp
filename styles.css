@@ -65,6 +65,7 @@ h6 {
   color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
+  margin: 0.25rem;
 }
 
 #html5-qrcode-button-camera-stop {
@@ -88,6 +89,7 @@ h6 {
   color: #fff;
   background-color: #6c757d;
   border-color: #6c757d;
+  margin: 0.25rem;
 }
 
 #html5-qrcode-anchor-scan-type-change {
