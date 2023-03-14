@@ -110,11 +110,11 @@ img[alt='Camera based scan'] {
   display: none !important;
 }
 @media (max-width: 420px) {
-  video {
+  /* video {
     width: 200px !important;
-  }
+  } */
   #reader {
-    width: 350px;
+    width: 200px;
     height: 200px !important;
   }
   #qr-shaded-region {
