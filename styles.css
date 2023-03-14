@@ -110,7 +110,7 @@ img[alt='Camera based scan'] {
 @media (max-width: 420px) {
   #reader {
     width: 350px;
-    height: 350px;
+    height: 200px !important;
   }
   #qr-shaded-region {
     border-width: 65px 90px;
