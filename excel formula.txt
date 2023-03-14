@@ -1,0 +1,1 @@
+=image("https://quickchart.io/qr?text=" &ENCODEURL("Name") &ENCODEURL(":") &ENCODEURL(B2) &ENCODEURL(",") &ENCODEURL("Dep") &ENCODEURL(":") &ENCODEURL(A2))
