@@ -7,6 +7,7 @@ h6 {
 #reader {
   width: 400px;
   border: none !important;
+  margin-top: 0.5rem;
 }
 
 .result {

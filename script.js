@@ -32,13 +32,17 @@ function onScanSuccess(qrCodeMessage) {
   // Convert the JSON strings back into arrays
   let result = Array.from(uniqueArray).map(JSON.parse);
   let result2 = Array.from(uniqueArray2).map(JSON.parse);
+
+  let uniqueToNames = result2.filter((arr, index, arrs) => {
+    return index === arrs.findIndex((a) => a[0] === arr[0]);
+  });
   const table = document.querySelector('.tableArea'); // replace #myDiv with the ID of your div
   table.style.display = 'block';
   const genBtn = document.querySelector('.excelGenArea'); // replace #myDiv with the ID of your div
   genBtn.style.display = 'flex';
 
   tableData = result.reverse();
-  googleSheetData = result2;
+  googleSheetData = uniqueToNames;
   console.log(tableData);
   console.log(googleSheetData);
 
