@@ -17,6 +17,8 @@ h6 {
 
 #reader__scan_region {
   background: white;
+  display: flex;
+  justify-content: center;
 }
 
 .parentContainer {
@@ -108,11 +110,14 @@ img[alt='Camera based scan'] {
   display: none !important;
 }
 @media (max-width: 420px) {
+  video {
+    width: 200px !important;
+  }
   #reader {
     width: 350px;
     height: 200px !important;
   }
   #qr-shaded-region {
-    border-width: 65px 90px;
+    border-width: 50px 90px !important;
   }
 }
